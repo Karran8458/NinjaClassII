@@ -1,0 +1,37 @@
+function Ninja(name) {
+
+	var ninja = {};
+	var speed = 3;
+	var strength = 3;
+	ninja.name = name;
+	ninja.health = 100;
+	ninja.speed = speed;
+	ninja.strength = strength;
+	ninja.sayName = function() {
+		console.log("My ninja name is " + ninja.name + " !");
+	}
+	ninja.showStats = function() {
+		console.log("Name: " + ninja.name + " Health: " + ninja.health + " Speed: " + ninja.speed + " Strength: " + ninja.strength);
+	}
+	ninja.drinkSake = function() {
+		console.log(ninja.name + " drank sake!");
+	}
+	ninja.punch = function(enemy) {
+		enemy.health -= 5;
+		console.log(enemy.name + " was punched by " + this.name + " and lost 5 health!");
+	}
+	ninja.kick = function(enemy) {
+		enemy.health -= 15;
+		this.strength -= 1;
+		console.log(enemy.name + " was kicked by " + this.name + " and lost 15 health!");
+		console.log("In this case, " + enemy.name + " lost 15 health because " + this.name + " has 1 point of strength!");
+	}
+	return ninja;
+}
+var ninja1 = new Ninja("Hyabusa");
+var ninja2 = new Ninja("Ryu");
+ninja1.showStats();
+ninja2.punch(ninja1);
+ninja1.showStats();
+ninja2.kick(ninja1);
+ninja2.showStats();
